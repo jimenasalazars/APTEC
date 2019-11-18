@@ -7,16 +7,15 @@ package Logic;
 
 /**
  *
- * @author samue
+ * @author Samuel and Jimena
  */
 public class Edge {
-    //atributos de las aristas
+    //Edge's atributess
     private Vertex reference;
     private int weight;
     private int time;
 
-    /**
-     * Contructor #1: Se etiqueta el camino de la arista.
+    /**Builder # 1: The path of the edge is labeled.
      * @param reference Vertex a conectar con otro nodo.
      * @param weight Peso de la arista.
      */
@@ -25,47 +24,56 @@ public class Edge {
         this.weight = weight;
     }
 
+    /** Builder # 2
+     * @param reference
+     * @param weight
+     * @param time 
+     */
     public Edge(Vertex reference, int weight, int time) {
         this.reference = reference;
         this.weight = weight;
         this.time = time;
     }
 
+    /**Method to know the hole time
+     * @return time
+     * @restrictions inputs must be ints
+     */
     public int getTime() {
         return time;
     }
-
+    /**Method to set the time
+     * @return 
+     * @restrictions inputs must be ints
+     */
     public void setTime(int time) {
         this.time = time;
     }
     
-    /**
-     * Metodo que devuelve la referencia de la arista.
+    /**Method that returns the reference of the edge.
      * @return Vertex adyacente.
      */
     public Vertex getReference() {
         return this.reference;
     }
     
-    /**
-     * Metodo que establece el valor de la referencia.
+    /**Method that sets a vertex's reference
      * @param reference Valor de la referencia.
      */
     public void setReference(Vertex reference) {
         this.reference = reference;
     }
     
-    /***
-     * Metodo que devuelve el valor del peso de la arista.
-     * @return Peso de la arista.
+    /**method that returns the edge's weight.
+     * @return edge's weight.
      */
     public int getWeight() {
         return weight;
     }
     
-    /**
-     * Metodo que establece el valor de la distancia en una arista
+    /**Method that sets edge's weight.
      * @param weight
+     * @restrictions inputs must be ints
      */
     public void setWeight(int weight) {
         this.weight = weight;

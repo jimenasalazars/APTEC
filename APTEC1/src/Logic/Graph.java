@@ -4,11 +4,6 @@
  * and open the template in the editor.
  */
 package Logic;
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 import java.awt.Graphics2D;
 import java.io.BufferedReader;
@@ -26,13 +21,10 @@ import javax.swing.tree.DefaultTreeModel;
 
 
 /**
- * Estructura de datos Grafo.
- * @author samuels
+ * Graph Structure
+ * @author Samuel and Jimena
  */
-/**
- *
- * @author samue
- */
+
 public class Graph {
      //atributos de la clase grafo
     public Vertex[] vertices;
@@ -40,9 +32,9 @@ public class Graph {
     private int verticesSize;
     private int contadorVertices;
     
-    /**
-     * Constructor #!: Inicializa el grafo con un tamaño n.
-     * @param n Cantidad de vertices para el grafo.
+    /**Constructor #1: Initializes the graph with a size n.
+     * @param n 
+     * @restrictions inputs must be ints
      */
     public Graph(int n){
         vertices = new Vertex[n];
@@ -52,7 +44,7 @@ public class Graph {
     }
     
     /**
-     * Metodo que permite añadir un nuevo vertice al grafo.
+     * 
      * @param element Valor del elemento del vertice.
      */
     public void nuevoVertice(Task element){
@@ -186,7 +178,6 @@ public class Graph {
         }
         bw.write("}");
         bw.close(); 
-       //GraphvizJava graphvizJava = new GraphvizJava("/home/pazbloise/Escritorio/archivoMapa.dot","/home/pazbloise/Escritorio/archivoMapa.png" );
     }
 
     /**
