@@ -232,6 +232,7 @@ public class CriticalRoute extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             Controller.register_CriticalRoute(Integer.parseInt(jTextField1.getText()), Integer.parseInt(jTextField2.getText()), Integer.parseInt(jTextField4.getText()), Integer.parseInt(jTextField3.getText()));
+            JOptionPane.showMessageDialog(null, "The edge was successfully registered", "Edge Register", JOptionPane.INFORMATION_MESSAGE);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Verify the data entered", "Error", JOptionPane.ERROR_MESSAGE);
         }
