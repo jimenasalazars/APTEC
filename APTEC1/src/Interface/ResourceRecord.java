@@ -5,6 +5,9 @@
  */
 package Interface;
 
+import ControllerPackage.Controller;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -73,7 +76,7 @@ public class ResourceRecord extends javax.swing.JFrame {
         jLabel3.setText("Resource's name");
 
         jLabel4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel4.setText("Resource's time");
+        jLabel4.setText("Resource's type");
 
         jLabel5.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel5.setText("Resource's capacity");
@@ -92,9 +95,19 @@ public class ResourceRecord extends javax.swing.JFrame {
 
         jButton3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton3.setText("Register");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton4.setText("Show Resources");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,6 +207,24 @@ public class ResourceRecord extends javax.swing.JFrame {
         dispose();
         ven.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try {
+            String info = Controller.LoadResource();
+            JOptionPane.showMessageDialog(null, info, "The Associated Resources are:", JOptionPane.INFORMATION_MESSAGE);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "This action is imposible to excecute", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try {
+            Controller.createResource(IDR.getText(), nameR.getText(), timeR.getText(), capacityR.getText(), availableR.getText(), inChargeR.getText());
+            JOptionPane.showMessageDialog(null, "The resource was successfully registered", "Resource Register", JOptionPane.INFORMATION_MESSAGE);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "This action is imposible to excecute", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -86,6 +86,11 @@ public class TaskRegister extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton2.setText("Associated tasks");
         jButton2.setEnabled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton3.setText("Next");
@@ -201,6 +206,8 @@ public class TaskRegister extends javax.swing.JFrame {
         try {
             Controller.grafo = new Graph(Integer.parseInt(NumTasks.getText()));
             Controller.listTask = new LinkedList<>();
+            Controller.listResources = new LinkedList<>();
+            
             jButton1.setEnabled(true);
             jButton2.setEnabled(true);
             Task ta1 = new Task(1, "Pintar", 1, "Perdro", "Cambio");
@@ -243,6 +250,7 @@ public class TaskRegister extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             Controller.register_TaskRegister(Integer.parseInt(ID.getText()), description.getText(), Integer.parseInt(effort.getText()), inCharge.getText(), type.getText());
+            JOptionPane.showMessageDialog(null, "The Task was successfully registered", "Task Register", JOptionPane.INFORMATION_MESSAGE);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Verify the data entered", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -255,6 +263,15 @@ public class TaskRegister extends javax.swing.JFrame {
         dispose();
         ven.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            String info = Controller.LoadTasks();
+            JOptionPane.showMessageDialog(null, info, "The Associated Tasks are:", JOptionPane.INFORMATION_MESSAGE);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "This action is imposible to excecute", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
