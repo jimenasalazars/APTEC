@@ -7,21 +7,24 @@ package Logic;
 
 /**
  *
- * @author samue
+ * @author Samuel and Jimena
  */
 public class Dijkstra {
-    private final Vertex[] vertices;
-    private Vertex[] verticesVisitados;
-    private Vertex[] verticesNoVisitados;
-    private TableMap<Vertex, Integer> distancia;
-    private TableMap<Vertex, Vertex> predecesores;
-    private final int size; // Cantidad de vertices en el grafo.
-    private int cV; // Contador de vertices visitados.
-    private int cNV; // Contador de vertices no visitados.
+    
+    //atributes
+    private final Vertex[] vertices; //vertex
+    private Vertex[] verticesVisitados; //visited vertex
+    private Vertex[] verticesNoVisitados; //not visited vertex
+    private TableMap<Vertex, Integer> distancia; //distance between vertex
+    private TableMap<Vertex, Vertex> predecesores; //dependencies
+    private final int size; //amount of vertex
+    private int cV; //amount of visited vertex
+    private int cNV; //amount of not ivsited vertex
     
     /**
-     * Constructor de la clase Dijkstra.
-     * @param grafo Recibe el grafo con el que se buscan las rutas mas cortas.
+     * Dijkstra's contructor.
+     * @param grafo
+     * @restriction inputs must be gaph objects
      */
     
     public Dijkstra(Graph grafo){
@@ -31,15 +34,17 @@ public class Dijkstra {
         this.cNV = 0;
     }
     
-    /**
-     * Metodo para ejecutar el algoritmo de Dijkstra.
-     * @param origen Recibe el vertice que se usa como referencia para realizar la ruta.
+    /**Method to execute the Dijkstra's algorithm.
+     * @param origen 
      */
-    
     public Vertex[] getVertices(){
         return vertices;
     }
 
+    /**Method to show the Dijkstra's algorithm.
+     * @param origen 
+     * @restriction inputs must be vertex objects
+     */
     public void DijkstraEnAccion(Vertex origen) {
         verticesVisitados = new Vertex[this.size];
         verticesNoVisitados = new Vertex[this.size];
@@ -67,6 +72,12 @@ public class Dijkstra {
         }
     }
     
+    /**Method to know the vertex's position
+     * @param valor
+     * @param arreglo
+     * @return 
+     * @restriction inputs must be int and vertex objects
+     */
     private int buscarPosVertice(int valor, Vertex[] arreglo){
         for(int i = 0; i < arreglo.length; i++){
             if(arreglo[i] != null){
@@ -78,6 +89,10 @@ public class Dijkstra {
         return -1;
     }
     
+    /**Method to know the minimal distance from an origin vertex
+     * @param origen 
+     * @restriction inputs must be vertex objects
+     */
     private void findMinimalDistances(Vertex origen){
         Vertex[] verticesAdyacentes = getNeighbors(origen);        
         for(Vertex destino : verticesAdyacentes){
@@ -92,6 +107,12 @@ public class Dijkstra {
         }
     }
     
+    /**Method to know the distance between an origin and destiny vertex
+     * @param origen
+     * @param destino
+     * @return 
+     * @restriction inputs must be vertex objects
+     */
     private int getDistance(Vertex origen, Vertex destino){
         for (int i = 0; i < this.size; i++){
             if(this.vertices[i] == origen){
@@ -117,6 +138,11 @@ public class Dijkstra {
         throw new RuntimeException("Should not happen");
     }
     
+    /**Method to know the vertex's neighbors
+     * @param vertice
+     * @return
+     * @restriction inputs must be vertex objects
+     */
     private Vertex[] getNeighbors(Vertex vertice){
         int contador = 0;
         Vertex[] neighbors = new Vertex[this.size];
@@ -158,6 +184,11 @@ public class Dijkstra {
         return neighbors;
     }
     
+    /**Method to get the minimun distance
+     * @param vertices
+     * @return 
+     * @restriction inputs must be vertex objects
+     */
     private Vertex getMinimum(Vertex[] vertices){
         Vertex min = null;
         for(Vertex vertice : vertices){
@@ -172,6 +203,11 @@ public class Dijkstra {
         return min;
     }
     
+    /**Boolean method to know if a vertex is visited
+     * @param vertice
+     * @return
+     * @restriction inputs must be vertex objects
+     */
     private boolean isVisited(Vertex vertice){
         int a = buscarPosVertice(vertice.getElement().getEffort(), this.verticesVisitados);
         if(a < 0){
@@ -180,6 +216,11 @@ public class Dijkstra {
         return true;
     }
     
+    /**Method to get the shortest distance to a specific destiny
+     * @param destino
+     * @return 
+     * @restriction inputs must be vertex objects
+     */
     private int getShortestDistance(Vertex destino){
         Integer d = distancia.get(destino);
         if(d == null){
@@ -192,9 +233,10 @@ public class Dijkstra {
 
     
     /**
-     * Metodo para calcular la ruta mas corta del origen al vertice deseado.
-     * @param destino Vertice al cual se quiere llegar.
-     * @return Arreglo con los vertices que contienen la ruta al destino.
+     * Method to get the shortest route from the origin to the destiny
+     * @param destino vertex where you want to go
+     * @return vertex array with the route
+     * @restriction inputs must be vertex objects
      */
     public Vertex[] getPath(Vertex destino) {
         Vertex[] path = new Vertex[this.size * this.size];
@@ -222,6 +264,9 @@ public class Dijkstra {
         return path;
     }
     
+    /**Method to start again the Dijkstra
+     * no param, return or restrictions
+     */
     public void reiniciar(){
        this.cV = 0;
        this.cNV = 0; 
