@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logic;
-
+package ControllerPackage;
+import Interface.*;
+import Logic.*;
 /**
  *
  * @author Usuario
@@ -15,6 +16,10 @@ public class APTEC1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+       
+        TaskRegister ven = new TaskRegister();
+        ven.setTitle("APTEC");
+        ven.setVisible(true);
         
     }
     
