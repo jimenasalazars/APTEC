@@ -61,7 +61,7 @@ public class ShortestRoute extends javax.swing.JFrame {
         jPanel1.setToolTipText("");
 
         jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Elephant", 0, 14)); // NOI18N
+        jTextArea1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 

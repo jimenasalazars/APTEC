@@ -115,7 +115,7 @@ public class CriticalRoute extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 14)); // NOI18N
+        jTextArea1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
