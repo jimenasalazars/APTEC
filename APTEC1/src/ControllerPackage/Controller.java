@@ -14,6 +14,7 @@ import javax.swing.tree.DefaultTreeModel;
  */
 public class Controller {
     public static LinkedList<Logic.Task> listTask;
+    public static LinkedList<Resource> listResources;
     public static Graph grafo;
     
     public static void register_TaskRegister(int ID, String description, int effort, String inCharge, String type){
@@ -70,16 +71,20 @@ public class Controller {
         Vertex aux;
 
         while (i < j) {            // mientras no se crucen las búsquedas
-            while (A[i].getElement().getEffort() <= pivote.getElement().getEffort() && i < j) {
-                i++; // busca elemento mayor que pivote
-            }
-            while (A[j].getElement().getEffort() > pivote.getElement().getEffort()) {
-                j--;         // busca elemento menor que pivote
-            }
-            if (i < j) {                      // si no se han cruzado                      
-                aux = A[i];                  // los intercambia
-                A[i] = A[j];
-                A[j] = aux;
+            if (A[i] == null || A[i] == null) {
+
+            } else {
+                while (A[i].getElement().getEffort() <= pivote.getElement().getEffort() && i < j) {
+                    i++; // busca elemento mayor que pivote
+                }
+                while (A[j].getElement().getEffort() > pivote.getElement().getEffort()) {
+                    j--;         // busca elemento menor que pivote
+                }
+                if (i < j) {                      // si no se han cruzado                      
+                    aux = A[i];                  // los intercambia
+                    A[i] = A[j];
+                    A[j] = aux;
+                }
             }
         }
         A[izq] = A[j]; // se coloca el pivote en su lugar de forma que tendremos
@@ -97,33 +102,37 @@ public class Controller {
         Vertex[] copia = grafo.getWbs();
         copia = quicksort(copia, 0, copia.length-1);
         for (Vertex vertice : copia) {
-            DefaultMutableTreeNode tarea = new DefaultMutableTreeNode(vertice.getElement().getNumTask());
-            raiz.add(tarea);
-            Vertex verticeActual = vertice;
-            LinkedList<Edge> arista = verticeActual.getAristas();           
-            arista.goToStart();
-            arista.next();
-            //DefaultTreeModel finalT = new DefaultTreeModel(raiz);
-            //WBS.setModel(finalT);
-            for(int m = 0; m < arista.getSize(); m++){
-                if(m == arista.getSize() - 1){
-                    Edge dato1 = (Edge) arista.getElement();
-                    Vertex dato2 = dato1.getReference();
-                    Logic.Task dato3 = dato2.getElement();
-                    DefaultMutableTreeNode dependencia = new DefaultMutableTreeNode(dato3.getDescription());
-                    tarea.add(dependencia);
-                    arista.next();
-                    DefaultTreeModel finalT = new DefaultTreeModel(raiz);
-                    WBS.setModel(finalT);
-                }else{
-                    Edge dato1 = (Edge) arista.getElement();
-                    Vertex dato2 = dato1.getReference();
-                    Logic.Task dato3 = dato2.getElement();
-                    DefaultMutableTreeNode dependencia = new DefaultMutableTreeNode(dato3.getDescription());
-                    tarea.add(dependencia);
-                    arista.next();
-                    DefaultTreeModel finalT = new DefaultTreeModel(raiz);
-                    WBS.setModel(finalT);
+            if (vertice == null) {
+
+            } else {
+                DefaultMutableTreeNode tarea = new DefaultMutableTreeNode(vertice.getElement().getNumTask());
+                raiz.add(tarea);
+                Vertex verticeActual = vertice;
+                LinkedList<Edge> arista = verticeActual.getAristas();
+                arista.goToStart();
+                arista.next();
+                //DefaultTreeModel finalT = new DefaultTreeModel(raiz);
+                //WBS.setModel(finalT);
+                for (int m = 0; m < arista.getSize(); m++) {
+                    if (m == arista.getSize() - 1) {
+                        Edge dato1 = (Edge) arista.getElement();
+                        Vertex dato2 = dato1.getReference();
+                        Logic.Task dato3 = dato2.getElement();
+                        DefaultMutableTreeNode dependencia = new DefaultMutableTreeNode(dato3.getDescription());
+                        tarea.add(dependencia);
+                        arista.next();
+                        DefaultTreeModel finalT = new DefaultTreeModel(raiz);
+                        WBS.setModel(finalT);
+                    } else {
+                        Edge dato1 = (Edge) arista.getElement();
+                        Vertex dato2 = dato1.getReference();
+                        Logic.Task dato3 = dato2.getElement();
+                        DefaultMutableTreeNode dependencia = new DefaultMutableTreeNode(dato3.getDescription());
+                        tarea.add(dependencia);
+                        arista.next();
+                        DefaultTreeModel finalT = new DefaultTreeModel(raiz);
+                        WBS.setModel(finalT);
+                    }
                 }
             }
             WBS.setVisible(true);
@@ -160,5 +169,33 @@ public class Controller {
             return diagram;
         }
     }
-    
+        
+        public static String LoadTasks(){
+            LinkedList.Node head = listTask.getHead().getNext();
+            String data = "";
+            for (int i = 0; i < listTask.getSize(); i++) {
+                Task ta = (Task) head.getElement();
+                data = data +ta.getNumTask()+" ID: "+ta.getID()+" Description: "+ta.getDescription()+" Effort: "+ta.getEffort()+" In Charge: "+ta.getInCharge()+" Type: "+ta.getType();
+                data = data + "\n";
+                head = head.getNext();
+            }
+            return data;
+        }
+        
+        public static String LoadResource(){
+            LinkedList.Node head = listResources.getHead().getNext();
+            String data = "";
+            for (int i = 0; i < listResources.getSize(); i++) {
+                Resource ta = (Resource) head.getElement();
+                data = data + ta.getNameResouce()+" ID: "+ta.getID()+" Type: "+ta.getType()+" Capacity: "+ta.getCapacity()+" Availability: "+ta.getAvailable()+" In Charge: "+ta.getInCharge();
+                data = data + "\n";
+                head = head.getNext();
+            }
+            return data;
+        }
+        
+        public static void createResource(String ID, String NameResouce, String Type, String Capacity, String Available, String inCharge){
+            Logic.Resource Re = new Logic.Resource(ID, NameResouce, Type, Capacity, Available, inCharge);
+            listResources.insert(Re);
+        }
 }
