@@ -5,6 +5,10 @@
  */
 package Interface;
 
+import ControllerPackage.*;
+import Logic.*;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Usuario
@@ -42,6 +46,9 @@ public class TaskRegister extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        NumTasks = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,12 +76,35 @@ public class TaskRegister extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton1.setText("Register");
         jButton1.setToolTipText("");
+        jButton1.setEnabled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton2.setText("Associated tasks");
+        jButton2.setEnabled(false);
 
         jButton3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton3.setText("Next");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jLabel8.setText("Number of Tasks");
+
+        jButton4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jButton4.setText("ok");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,7 +117,13 @@ public class TaskRegister extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(340, 340, 340)
+                        .addContainerGap()
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NumTasks, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4)
+                        .addGap(130, 130, 130)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3))
@@ -116,9 +152,14 @@ public class TaskRegister extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton3))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jButton3))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(NumTasks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(32, 32, 32)
                 .addComponent(jLabel2)
                 .addGap(61, 61, 61)
@@ -154,6 +195,66 @@ public class TaskRegister extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+        try {
+            Controller.grafo = new Graph(Integer.parseInt(NumTasks.getText()));
+            Controller.listTask = new LinkedList<>();
+            jButton1.setEnabled(true);
+            jButton2.setEnabled(true);
+            Task ta1 = new Task(1, "Pintar", 1, "Perdro", "Cambio");
+            Task ta2 = new Task(2, "Comprar", 9, "Juan", "Operativa");
+            Task ta3 = new Task(3, "Estudiar", 8, "Guada", "Aprobación");
+            Task ta4 = new Task(4, "Construir", 7, "Samuel", "Contrato");
+            Task ta5 = new Task(5, "Limpiar", 6, "Jimena", "Gestión");
+            Task ta6 = new Task(6, "Cortar", 5, "Naia", "Cambios");
+            Task ta7 = new Task(7, "Pegar", 4, "Mambo", "Operativa");
+            Task ta8 = new Task(8, "Leer", 3, "Xavier", "Aprobación");
+            Task ta9 = new Task(9, "Aprender", 2, "Fiorella", "Contrato");
+            Task ta10 = new Task(10, "Ordenar", 1, "Daniel", "Gestión");
+
+            Controller.grafo.nuevoVertice(ta1);
+            Controller.grafo.nuevoVertice(ta2);
+            Controller.grafo.nuevoVertice(ta3);
+            Controller.grafo.nuevoVertice(ta4);
+            Controller.grafo.nuevoVertice(ta5);
+            Controller.grafo.nuevoVertice(ta6);
+            Controller.grafo.nuevoVertice(ta7);
+            Controller.grafo.nuevoVertice(ta8);
+            Controller.grafo.nuevoVertice(ta9);
+            Controller.grafo.nuevoVertice(ta10);
+
+            Controller.grafo.agregarRuta(Controller.grafo.vertices[0], Controller.grafo.vertices[1], 2, 3);
+            Controller.grafo.agregarRuta(Controller.grafo.vertices[1], Controller.grafo.vertices[2], 3, 2);
+            Controller.grafo.agregarRuta(Controller.grafo.vertices[2], Controller.grafo.vertices[3], 4, 5);
+            Controller.grafo.agregarRuta(Controller.grafo.vertices[3], Controller.grafo.vertices[4], 5, 4);
+            Controller.grafo.agregarRuta(Controller.grafo.vertices[4], Controller.grafo.vertices[5], 6, 7);
+            Controller.grafo.agregarRuta(Controller.grafo.vertices[5], Controller.grafo.vertices[6], 7, 6);
+            Controller.grafo.agregarRuta(Controller.grafo.vertices[6], Controller.grafo.vertices[7], 8, 8);
+            Controller.grafo.agregarRuta(Controller.grafo.vertices[7], Controller.grafo.vertices[8], 9, 9);
+            Controller.grafo.agregarRuta(Controller.grafo.vertices[8], Controller.grafo.vertices[9], 1, 10);
+            Controller.grafo.agregarRuta(Controller.grafo.vertices[9], Controller.grafo.vertices[0], 10, 1);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Verify the data entered", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            Controller.register_TaskRegister(Integer.parseInt(ID.getText()), description.getText(), Integer.parseInt(effort.getText()), inCharge.getText(), type.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Verify the data entered", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        CriticalRoute ven = new CriticalRoute();
+        ven.setTitle("Show Dependencies");
+        dispose();
+        ven.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,12 +293,14 @@ public class TaskRegister extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ID;
+    private javax.swing.JTextField NumTasks;
     private javax.swing.JTextField description;
     private javax.swing.JTextField effort;
     private javax.swing.JTextField inCharge;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -205,6 +308,7 @@ public class TaskRegister extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField type;
     // End of variables declaration//GEN-END:variables
 }
