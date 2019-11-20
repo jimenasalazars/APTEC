@@ -72,10 +72,10 @@ public class Controller {
 
         while (i < j) {            // mientras no se crucen las búsquedas
             if (A[i] == null) {
-                i=i++;
+                i=i+1;
             }
             if (A[j] == null){ 
-                j=j--;
+                j=j-1;
             } else {
                 while (A[i].getElement().getEffort() <= pivote.getElement().getEffort() && i < j) {
                     i++; // busca elemento mayor que pivote
@@ -103,7 +103,6 @@ public class Controller {
     public static void FillDataToJTree(JTree WBS){
         DefaultMutableTreeNode raiz = new DefaultMutableTreeNode("Project");
         Vertex[] copia = grafo.getWbs();
-        System.out.print(copia[12]);
         copia = quicksort(copia, 0, copia.length-1);
         for (Vertex vertice : copia) {
             if (vertice == null) {
@@ -148,11 +147,15 @@ public class Controller {
         if (arrayV == null) {
             String diagram = "Begining --> ";
             for (Vertex vertice : arrayD) {
-                diagram = diagram + vertice.getElement().getNumTask() + " --> ";
-                Vertex verticeActual = vertice;
-                LinkedList<Edge> arista = verticeActual.getAristas();
-                arista.goToStart();
-                arista.next();
+                if (vertice == null) {
+
+                } else {
+                    diagram = diagram + vertice.getElement().getNumTask() + " --> ";
+                    Vertex verticeActual = vertice;
+                    LinkedList<Edge> arista = verticeActual.getAristas();
+                    arista.goToStart();
+                    arista.next();
+                }
 
             }
             diagram = diagram + "End";
@@ -161,11 +164,15 @@ public class Controller {
         } else {
             String diagram = "Begining --> ";
             for (Vertex vertice : arrayV) {
-                diagram = diagram + vertice.getElement().getNumTask() + " --> ";
-                Vertex verticeActual = vertice;
-                LinkedList<Edge> arista = verticeActual.getAristas();
-                arista.goToStart();
-                arista.next();
+                if (vertice == null) {
+
+                } else {
+                    diagram = diagram + vertice.getElement().getNumTask() + " --> ";
+                    Vertex verticeActual = vertice;
+                    LinkedList<Edge> arista = verticeActual.getAristas();
+                    arista.goToStart();
+                    arista.next();
+                }
 
             }
             diagram = diagram + "End";
