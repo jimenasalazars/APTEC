@@ -5,12 +5,13 @@
  */
 package Logic;
 import ControllerPackage.*;
+import java.io.Serializable;
 /**
  *
  * @author samue
  * @param <T>
  */
-public class Vertex<T> {
+public class Vertex<T> implements Serializable {
     //atributos de la clase vertice
     private final LinkedList<Edge> aristas = new LinkedList<>();
     private Task element;

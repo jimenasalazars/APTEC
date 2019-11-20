@@ -6,12 +6,13 @@
 package Logic;
 
 import ControllerPackage.Controller;
+import java.io.Serializable;
 
 /**
  *
  * @author samue
  */
-public class Resource {
+public class Resource implements Serializable {
     private String ID;
     private String NameResouce;
     private String Type;

@@ -5,11 +5,13 @@
  */
 package Logic;
 
+import java.io.Serializable;
+
 /**
  *
  * @author samue
  */
-public class Task {
+public class Task implements Serializable {
     
     
     private int ID;

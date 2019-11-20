@@ -5,12 +5,14 @@
  */
 package Logic;
 
+import java.io.Serializable;
+
 /**
  *
  * @author samue
  */
-public class LinkedList  <T> {
-    public class Node<T> {
+public class LinkedList  <T> implements Serializable {
+    public class Node<T> implements Serializable{
     //atributos
 		
 		public T element;

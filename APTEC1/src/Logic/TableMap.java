@@ -5,12 +5,14 @@
  */
 package Logic;
 
+import java.io.Serializable;
+
 /**
  *
  * @author samue
  */
-public class TableMap <K, V>{
-private class Node<K, V> {
+public class TableMap <K, V> implements Serializable{
+private class Node<K, V> implements Serializable {
         
         private K key;
         private V value;

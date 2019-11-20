@@ -7,6 +7,7 @@ package Interface;
 import Logic.*;
 import ControllerPackage.*;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -14,7 +15,7 @@ import javax.swing.JOptionPane;
  *
  * @author Usuario
  */
-public class ShortestRoute extends javax.swing.JFrame {
+public class ShortestRoute extends javax.swing.JFrame  implements Serializable{
 
     /**
      * Creates new form ShortestRoute

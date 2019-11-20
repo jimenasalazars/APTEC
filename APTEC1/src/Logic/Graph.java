@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.StringTokenizer;
 import javax.swing.JPanel;
 import javax.swing.JTree;
@@ -25,7 +26,7 @@ import javax.swing.tree.DefaultTreeModel;
  * @author Samuel and Jimena
  */
 
-public class Graph {
+public class Graph implements Serializable{
      //atributos de la clase grafo
     public Vertex[] vertices;
     public Vertex[] wbs;

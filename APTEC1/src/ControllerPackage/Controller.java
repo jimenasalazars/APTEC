@@ -71,8 +71,11 @@ public class Controller {
         Vertex aux;
 
         while (i < j) {            // mientras no se crucen las búsquedas
-            if (A[i] == null || A[i] == null) {
-
+            if (A[i] == null) {
+                i=i++;
+            }
+            if (A[j] == null){ 
+                j=j--;
             } else {
                 while (A[i].getElement().getEffort() <= pivote.getElement().getEffort() && i < j) {
                     i++; // busca elemento mayor que pivote
@@ -100,6 +103,7 @@ public class Controller {
     public static void FillDataToJTree(JTree WBS){
         DefaultMutableTreeNode raiz = new DefaultMutableTreeNode("Project");
         Vertex[] copia = grafo.getWbs();
+        System.out.print(copia[12]);
         copia = quicksort(copia, 0, copia.length-1);
         for (Vertex vertice : copia) {
             if (vertice == null) {

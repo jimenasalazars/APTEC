@@ -8,6 +8,7 @@ package Interface;
 import ControllerPackage.*;
 import Logic.*;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -16,7 +17,7 @@ import javax.swing.JOptionPane;
  *
  * @author Usuario
  */
-public class TaskRegister extends javax.swing.JFrame {
+public class TaskRegister extends javax.swing.JFrame implements Serializable {
 
     /**
      * Creates new form TaskRegister
@@ -231,18 +232,17 @@ public class TaskRegister extends javax.swing.JFrame {
             jButton2.setEnabled(true);
             jButton5.setEnabled(false);
             
-            /**
-            Task ta1 = new Task(1, "Pintar", 1, "Pedro", "Cambio");
-            Task ta2 = new Task(2, "Comprar", 9, "Juan", "Operativa");
-            Task ta3 = new Task(3, "Estudiar", 8, "Guada", "Aprobación");
-            Task ta4 = new Task(4, "Construir", 7, "Samuel", "Contrato");
-            Task ta5 = new Task(5, "Limpiar", 6, "Jimena", "Gestión");
-            Task ta6 = new Task(6, "Cortar", 5, "Naia", "Cambios");
-            Task ta7 = new Task(7, "Pegar", 4, "Mambo", "Operativa");
-            Task ta8 = new Task(8, "Leer", 3, "Xavier", "Aprobación");
-            Task ta9 = new Task(9, "Aprender", 2, "Fiorella", "Contrato");
-            Task ta10 = new Task(10, "Ordenar", 1, "Daniel", "Gestión");
-
+            
+            Task ta1 = new Task(1, "Paint", 1, "Pedro", "Change");
+            Task ta2 = new Task(2, "Buy", 9, "Juan", "Operative");
+            Task ta3 = new Task(3, "Study", 8, "Guada", "Aproval");
+            Task ta4 = new Task(4, "Build", 7, "Samuel", "Contract");
+            Task ta5 = new Task(5, "Clean", 6, "Jimena", "Managment");
+            Task ta6 = new Task(6, "Cut", 5, "Naia", "Change");
+            Task ta7 = new Task(7, "Paste", 4, "Mambo", "Operative");
+            Task ta8 = new Task(8, "Read", 3, "Xavier", "Aproval");
+            Task ta9 = new Task(9, "Learn", 2, "Fiorella", "Contract");
+            Task ta10 = new Task(10, "Organize", 1, "Daniel", "Managment"); 
             Controller.grafo.nuevoVertice(ta1);
             Controller.grafo.nuevoVertice(ta2);
             Controller.grafo.nuevoVertice(ta3);
@@ -264,7 +264,7 @@ public class TaskRegister extends javax.swing.JFrame {
             Controller.grafo.agregarRuta(Controller.grafo.vertices[7], Controller.grafo.vertices[8], 9, 9);
             Controller.grafo.agregarRuta(Controller.grafo.vertices[8], Controller.grafo.vertices[9], 1, 10);
             Controller.grafo.agregarRuta(Controller.grafo.vertices[9], Controller.grafo.vertices[0], 10, 1);
-            */
+            
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Verify the data entered", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -300,9 +300,9 @@ public class TaskRegister extends javax.swing.JFrame {
         Persistence per = new Persistence();
         try {
             jButton4.setEnabled(true);
-            per.retrieveTasks();
-            per.retrieveGraph();
-            per.retrieveResource();
+            Controller.listTask=per.retrieveTasks();
+            Controller.grafo=per.retrieveGraph();
+            Controller.listResources=per.retrieveResource();
         } catch (IOException ex) {
             Logger.getLogger(TaskRegister.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

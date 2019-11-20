@@ -15,8 +15,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public class Persistence {
+public class Persistence implements Serializable {
     
     public void saveTasks (LinkedList x) throws FileNotFoundException, IOException{
         ObjectOutputStream xToSave = new ObjectOutputStream(new FileOutputStream("Tasks.object"));
