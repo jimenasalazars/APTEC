@@ -8,17 +8,18 @@ import ControllerPackage.*;
 import java.io.Serializable;
 /**
  *
- * @author samue
+ * @author Samuel and Jimena
  * @param <T>
  */
 public class Vertex<T> implements Serializable {
-    //atributos de la clase vertice
+    //Atributes
     private final LinkedList<Edge> aristas = new LinkedList<>();
     private Task element;
 
     /**
-     * Constructor #1: Crea un nuevo vertice (nodo) que se agrega al grafo.
-     * @param element Elemento que identifica el vertice.
+     * Constructor # 1: Creates a new vertex (node) that is added to the graph.
+     * @param element 
+     * @restrictions element must be Task
      */
     public Vertex(Task element){
          this.element = element;
@@ -29,25 +30,27 @@ public class Vertex<T> implements Serializable {
     }
 
     /**
-     * Metodo que devuelve el valor del vertice que se esta consultando.
-     * @return Valor del vertice.
+     * Method that returns the value of the vertex being queried.
+     * @return vertex value
      */
     public Task getElement() {
          return element;
     }
 
     /**
-     * Metodo que permite modificar el valor de un vertice deseado.
-     * @param element Valor del vertice.
+     * Method that allows to modify the value of a desired vertex.
+     * @param element 
+     * @restrictions element must be Task
      */
     public void setElement(Task element){
         this.element = element;
     }
 
     /**
-     * Metodo que permite agregar una adyacencia entre dos nodos.
+     * Method that allows adding an adjacency between two nodes.
      * @param reference Vertex a conectar.
      * @param weight Peso del vertice.
+     * @restrictions reference must be Vertex, weight must be int and time must be int
     */
 
     public void nuevaRuta(Vertex reference, int weight, int time){
@@ -56,9 +59,10 @@ public class Vertex<T> implements Serializable {
     }
     
     /**
-     * Metodo que elimina una ruta entre dos vertices.
-     * @param referencia referencia de la ruta que se desea eliminar.
-     * @param weight peso de la arista.
+     * Method that eliminates a route between two vertices.
+     * @param referencia 
+     * @param weight
+     * @restrictions referencia must be Vertex, and weight must be int
      */
     public void eliminarRuta(Vertex referencia, int weight){
         for(int i = 0; i < aristas.getSize();i++){
@@ -72,8 +76,8 @@ public class Vertex<T> implements Serializable {
     }
 
     /**
-     * Metodo que devuelve las aristas asociadas a un vertice.
-     * @return LinkedList con las aristas.
+     * Method that returns the edges associated with a vertex.
+     * @return LinkedList with edges
      */
     public LinkedList<Edge> getAristas(){
         return this.aristas;

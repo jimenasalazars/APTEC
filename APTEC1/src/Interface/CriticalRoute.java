@@ -229,6 +229,10 @@ public class CriticalRoute extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             Controller.register_CriticalRoute(Integer.parseInt(jTextField1.getText()), Integer.parseInt(jTextField2.getText()), Integer.parseInt(jTextField4.getText()), Integer.parseInt(jTextField3.getText()));
@@ -240,6 +244,10 @@ public class CriticalRoute extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             jTextArea1.setText(Controller.getDependencies());
@@ -249,6 +257,10 @@ public class CriticalRoute extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         TaskRegister ven = new TaskRegister();
         ven.setTitle("APTEC");
@@ -256,6 +268,10 @@ public class CriticalRoute extends javax.swing.JFrame {
         ven.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         ShowWBS ven = new ShowWBS();
         ven.setTitle("Show WBS");

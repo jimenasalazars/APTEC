@@ -134,6 +134,10 @@ public class ShortestRoute extends javax.swing.JFrame  implements Serializable{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ResourceRecord ven = new ResourceRecord();
         ven.setTitle("Resource Record");
@@ -141,6 +145,10 @@ public class ShortestRoute extends javax.swing.JFrame  implements Serializable{
         ven.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             Dijkstra dij = new Dijkstra(Controller.grafo);
@@ -152,6 +160,10 @@ public class ShortestRoute extends javax.swing.JFrame  implements Serializable{
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Persistence per = new Persistence();
         try {

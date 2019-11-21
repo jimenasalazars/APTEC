@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author samue
+ * @author Samuel and Jimena
  */
 public class TableMap <K, V> implements Serializable{
 private class Node<K, V> implements Serializable {
@@ -29,9 +29,9 @@ private class Node<K, V> implements Serializable {
         }
 
         /**
-         * Constructor de la clase Nodo para el diccionario.
-         * @param key Nombre de la referencia almacenada en diccionario.
-         * @param value Valor de la referencia almacenada en diccionario.
+         *Constructor of the Node class for the dictionary.
+         * @param key 
+         * @param value 
          */
         
         public Node(K key, V value) {
@@ -41,47 +41,66 @@ private class Node<K, V> implements Serializable {
         }
         
         /**
-         * Constructor de la clase Nodo para el diccionario.
-         * @param key Nombre de la referencia almacenada en diccionario.
-         * @param value Valor de la referencia almacenada en diccionario.
-         * @param next Nodo de la referencia al siguiente Nodo.
+         * Constructor of the Node class for the dictionary.
+         * @param key 
+         * @param value 
+         * @param next
          */
-
         public Node(K key, V value, Node<K, V> next) {
             this.key = key;
             this.value = value;
             this.next = next;
         }
         
+        /**
+         * Gets value
+         * @return 
+         */
         private V getValue() {
             return this.value;
         }
 
+        /**
+         * Sets value
+         * @param value 
+         */
         private void setValue(V value) {
             this.value = value;
         }
 
+        /**
+         * Sets key
+         * @param key 
+         */
         private void setKey(K key){
             this.key =key;
         }
         
+        /**
+         * Gets next
+         * @return 
+         */
         private Node<K, V> getNext() {
             return this.next;
         }
 
+        /**
+         * Sets next
+         * @param next 
+         */
         private void setNext(Node<K, V> next) {
             this.next = next;
         }
     }
+    //atributes
     private Node<K, V> head;
     private Node<K, V> tail;
     private Node<K, V> current;
     private int size;
     
     /**
-     * Constructor de la clase diccionario.
+     * Constructor 
      */
-    
     public TableMap() {
         this.head = new Node<>();
         this.tail = this.head;
@@ -90,9 +109,10 @@ private class Node<K, V> implements Serializable {
     }
 
     /**
-     * Metodo para agregar un key al diccionario.
-     * @param key Nombre de la referencia.
-     * @param value Valor que almacena dicha referencia.
+     * Method to add a key to the dictionary.
+     * @param key
+     * @param value 
+     * @key and value, generics
      */
     
     public void put (K key, V value) {
@@ -112,7 +132,7 @@ private class Node<K, V> implements Serializable {
     }
     
     /**
-     * Muestra el nombre del key referenciado.
+     * Shows the name of the referenced key.
      * @return Nombre del key.
      */
     
@@ -122,20 +142,19 @@ private class Node<K, V> implements Serializable {
     }
     
     /**
-     * Modifica el nombre de la referencia del key.
-     * @param nombre Nombre con el que se quiere modificar.
-     * @return Devuelve el nombre del key referenciado.
+     * Modify the name of the key reference.
+     * @param nombre
+     * @return
      */
-    
     public K renameKey(K nombre) {
         this.current.setKey(nombre);
         return nombre;
     }
     
     /**
-     * Muestra el valor del key referenciado.
-     * @param key El nombre del key del que se quiere obtener el valor.
-     * @return Devuelve el valor o no devuelve nada si no lo encuentra.
+     *Shows the value of the referenced key.
+     * @param key 
+     * @return 
      */
     
     public V get(K key) {
@@ -154,10 +173,10 @@ private class Node<K, V> implements Serializable {
     }
     
     /**
-     * Modifica el valor del key.
-     * @param key Nombre de la referencia que se quiere cambiar de valor.
-     * @param list Lista que se quiere agregar como valor de referencia.
-     * @return Devuelve la lista que se agrego como valor, o no devuelve nada si no encuentra el key referenciado.
+     * Modifies key's value
+     * @param key 
+     * @param list 
+     * @return 
      */
     
     public V setValue(String key, V list){
@@ -175,9 +194,9 @@ private class Node<K, V> implements Serializable {
     }
     
     /**
-     * Metodo para borrar un key del diccionario.
-     * @param key El nombre del key que se quiere eliminar.
-     * @return true: si se puede avanzar, false: si no se puede avanzar.
+     * deletes key on the dictionary
+     * @param key
+     * @return true: can move forward, false: can't move forward
      */
     
     public boolean remove (K key) {

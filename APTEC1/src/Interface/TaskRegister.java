@@ -221,6 +221,10 @@ public class TaskRegister extends javax.swing.JFrame implements Serializable {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
         try {
@@ -232,7 +236,7 @@ public class TaskRegister extends javax.swing.JFrame implements Serializable {
             jButton2.setEnabled(true);
             jButton5.setEnabled(false);
             
-            
+            /**
             Task ta1 = new Task(1, "Paint", 1, "Pedro", "Change");
             Task ta2 = new Task(2, "Buy", 9, "Juan", "Operative");
             Task ta3 = new Task(3, "Study", 8, "Guada", "Aproval");
@@ -264,12 +268,16 @@ public class TaskRegister extends javax.swing.JFrame implements Serializable {
             Controller.grafo.agregarRuta(Controller.grafo.vertices[7], Controller.grafo.vertices[8], 9, 9);
             Controller.grafo.agregarRuta(Controller.grafo.vertices[8], Controller.grafo.vertices[9], 1, 10);
             Controller.grafo.agregarRuta(Controller.grafo.vertices[9], Controller.grafo.vertices[0], 10, 1);
-            
+           */
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Verify the data entered", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             Controller.register_TaskRegister(Integer.parseInt(ID.getText()), description.getText(), Integer.parseInt(effort.getText()), inCharge.getText(), type.getText());
@@ -279,14 +287,20 @@ public class TaskRegister extends javax.swing.JFrame implements Serializable {
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         CriticalRoute ven = new CriticalRoute();
         ven.setTitle("Show Dependencies");
         dispose();
         ven.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             String info = Controller.LoadTasks();
@@ -295,7 +309,10 @@ public class TaskRegister extends javax.swing.JFrame implements Serializable {
             JOptionPane.showMessageDialog(null, "This action is imposible to excecute", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         Persistence per = new Persistence();
         try {

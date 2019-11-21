@@ -10,22 +10,45 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 /**
  *
- * @author samue
+ * @author Samuel and Jimena
  */
 public class Controller {
+    
+    //Atributes
     public static LinkedList<Logic.Task> listTask;
     public static LinkedList<Resource> listResources;
     public static Graph grafo;
     
+    /**
+     * Creates a new vertex (task)
+     * @param ID
+     * @param description
+     * @param effort
+     * @param inCharge
+     * @param type 
+     * @restrictions ID and effort must be int, description, inCharge and type must be String
+     */
     public static void register_TaskRegister(int ID, String description, int effort, String inCharge, String type){
         Logic.Task newT = new Logic.Task(ID, description, effort, inCharge, type);
         grafo.nuevoVertice(newT);
     }
     
+    /**
+     * Creates a new dependency
+     * @param start
+     * @param end
+     * @param effort
+     * @param time 
+     * @restrictions all the parameters must be ints
+     */
     public static void register_CriticalRoute(int start, int end, int effort, int time){
         grafo.agregarRuta(grafo.vertices[start-1],grafo.vertices[end-1], effort, time);
     }
     
+    /**
+     * Shows all dependencies
+     * @return 
+     */
     public static String getDependencies(){
         String diagram = "";
         for (Vertex vertice : grafo.vertices) {
@@ -63,6 +86,14 @@ public class Controller {
         return diagram;
     }
     
+    /**
+     * Sort
+     * @param A
+     * @param izq
+     * @param der
+     * @return 
+     * @restrictions A[] must be Vertex , izq and der must be ints
+     */
     public static Vertex[] quicksort(Vertex A[], int izq, int der) {
 
         Vertex pivote = A[izq]; // tomamos primer elemento como pivote
@@ -100,6 +131,12 @@ public class Controller {
         }
         return A;
     }
+    
+    /**
+     * Puts info in the JTree to show it in the interface
+     * @param WBS 
+     * @restrictions WBS must be JTree
+     */
     public static void FillDataToJTree(JTree WBS){
         DefaultMutableTreeNode raiz = new DefaultMutableTreeNode("Project");
         Vertex[] copia = grafo.getWbs();
@@ -143,6 +180,13 @@ public class Controller {
             
     }
     
+    /**
+     * Shows the route
+     * @param arrayV
+     * @param arrayD
+     * @return 
+     * @restrictions arrayV and arrayD must be Vertex[]
+     */
         public static String PrintPath(Vertex[] arrayV, Vertex[] arrayD){
         if (arrayV == null) {
             String diagram = "Begining --> ";
@@ -181,6 +225,10 @@ public class Controller {
         }
     }
         
+        /**
+         * Shows all the tasks
+         * @return 
+         */
         public static String LoadTasks(){
             LinkedList.Node head = listTask.getHead().getNext();
             String data = "";
@@ -193,6 +241,10 @@ public class Controller {
             return data;
         }
         
+        /**
+         * Shows all the resources
+         * @return 
+         */
         public static String LoadResource(){
             LinkedList.Node head = listResources.getHead().getNext();
             String data = "";
@@ -205,6 +257,16 @@ public class Controller {
             return data;
         }
         
+        /**
+         * Creates a new resource
+         * @param ID
+         * @param NameResouce
+         * @param Type
+         * @param Capacity
+         * @param Available
+         * @param inCharge
+         * @restrictions ID, NameResouce, Type, Capacity, Available, and inCharge must be string
+         */
         public static void createResource(String ID, String NameResouce, String Type, String Capacity, String Available, String inCharge){
             Logic.Resource Re = new Logic.Resource(ID, NameResouce, Type, Capacity, Available, inCharge);
             listResources.insert(Re);
