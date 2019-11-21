@@ -136,6 +136,10 @@ public class ShowWBS extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTree1MouseClicked
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             Controller.FillDataToJTree(jTree1);
@@ -145,6 +149,10 @@ public class ShowWBS extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         CriticalRoute ven = new CriticalRoute();
         ven.setTitle("Show Dependencies");
@@ -152,6 +160,10 @@ public class ShowWBS extends javax.swing.JFrame {
         ven.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         ResourceRecord ven = new ResourceRecord();
         ven.setTitle("Resource Record");

@@ -6,12 +6,16 @@
 package Interface;
 import Logic.*;
 import ControllerPackage.*;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 /**
  *
  * @author Usuario
  */
-public class ShortestRoute extends javax.swing.JFrame {
+public class ShortestRoute extends javax.swing.JFrame  implements Serializable{
 
     /**
      * Creates new form ShortestRoute
@@ -35,6 +39,7 @@ public class ShortestRoute extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +87,14 @@ public class ShortestRoute extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton2.setText("Save changes");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,7 +112,8 @@ public class ShortestRoute extends javax.swing.JFrame {
                                 .addComponent(jButton1)
                                 .addGap(227, 227, 227)
                                 .addComponent(jLabel1)
-                                .addGap(0, 315, Short.MAX_VALUE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+                                .addComponent(jButton2)))))
                 .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
@@ -108,7 +122,8 @@ public class ShortestRoute extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jButton2))
                 .addGap(25, 25, 25)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
@@ -119,6 +134,10 @@ public class ShortestRoute extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ResourceRecord ven = new ResourceRecord();
         ven.setTitle("Resource Record");
@@ -126,6 +145,10 @@ public class ShortestRoute extends javax.swing.JFrame {
         ven.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             Dijkstra dij = new Dijkstra(Controller.grafo);
@@ -136,6 +159,22 @@ public class ShortestRoute extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    /**
+     * 
+     * @param evt 
+     */
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Persistence per = new Persistence();
+        try {
+            per.saveGraph(Controller.grafo);
+            per.saveResource(Controller.listResources);
+            per.saveTasks(Controller.listTask);
+        } catch (IOException ex) {
+            Logger.getLogger(ShortestRoute.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,6 +213,7 @@ public class ShortestRoute extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

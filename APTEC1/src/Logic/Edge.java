@@ -5,11 +5,13 @@
  */
 package Logic;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Samuel and Jimena
  */
-public class Edge {
+public class Edge implements Serializable {
     //Edge's atributess
     private Vertex reference;
     private int weight;

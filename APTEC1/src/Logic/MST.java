@@ -13,7 +13,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-public class MST {
+public class MST implements Serializable {
 
     // Number of vertices in the graph 
     private static final int V = 5;

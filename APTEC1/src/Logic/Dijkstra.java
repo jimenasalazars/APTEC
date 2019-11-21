@@ -5,11 +5,13 @@
  */
 package Logic;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Samuel and Jimena
  */
-public class Dijkstra {
+public class Dijkstra implements Serializable{
     
     //atributes
     private final Vertex[] vertices; //vertex

@@ -7,13 +7,17 @@ package Interface;
 
 import ControllerPackage.*;
 import Logic.*;
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Usuario
  */
-public class TaskRegister extends javax.swing.JFrame {
+public class TaskRegister extends javax.swing.JFrame implements Serializable {
 
     /**
      * Creates new form TaskRegister
@@ -49,6 +53,7 @@ public class TaskRegister extends javax.swing.JFrame {
         NumTasks = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,11 +108,19 @@ public class TaskRegister extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         jLabel8.setText("Number of Tasks");
 
-        jButton4.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jButton4.setText("ok");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jButton5.setText("Load tasks");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
             }
         });
 
@@ -123,11 +136,14 @@ public class TaskRegister extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(NumTasks, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(NumTasks, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton4))
+                            .addComponent(jButton5))
                         .addGap(130, 130, 130)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -158,49 +174,57 @@ public class TaskRegister extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jButton3))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(NumTasks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(32, 32, 32)
-                .addComponent(jLabel2)
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(effort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(inCharge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jButton3))
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel2)
+                        .addGap(61, 61, 61)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(description, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(effort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(inCharge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)))
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(NumTasks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)))
-                .addComponent(jButton1)
+                        .addComponent(jButton5)))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
         try {
@@ -210,17 +234,19 @@ public class TaskRegister extends javax.swing.JFrame {
             
             jButton1.setEnabled(true);
             jButton2.setEnabled(true);
-            Task ta1 = new Task(1, "Pintar", 1, "Perdro", "Cambio");
-            Task ta2 = new Task(2, "Comprar", 9, "Juan", "Operativa");
-            Task ta3 = new Task(3, "Estudiar", 8, "Guada", "Aprobación");
-            Task ta4 = new Task(4, "Construir", 7, "Samuel", "Contrato");
-            Task ta5 = new Task(5, "Limpiar", 6, "Jimena", "Gestión");
-            Task ta6 = new Task(6, "Cortar", 5, "Naia", "Cambios");
-            Task ta7 = new Task(7, "Pegar", 4, "Mambo", "Operativa");
-            Task ta8 = new Task(8, "Leer", 3, "Xavier", "Aprobación");
-            Task ta9 = new Task(9, "Aprender", 2, "Fiorella", "Contrato");
-            Task ta10 = new Task(10, "Ordenar", 1, "Daniel", "Gestión");
-
+            jButton5.setEnabled(false);
+            
+            /**
+            Task ta1 = new Task(1, "Paint", 1, "Pedro", "Change");
+            Task ta2 = new Task(2, "Buy", 9, "Juan", "Operative");
+            Task ta3 = new Task(3, "Study", 8, "Guada", "Aproval");
+            Task ta4 = new Task(4, "Build", 7, "Samuel", "Contract");
+            Task ta5 = new Task(5, "Clean", 6, "Jimena", "Managment");
+            Task ta6 = new Task(6, "Cut", 5, "Naia", "Change");
+            Task ta7 = new Task(7, "Paste", 4, "Mambo", "Operative");
+            Task ta8 = new Task(8, "Read", 3, "Xavier", "Aproval");
+            Task ta9 = new Task(9, "Learn", 2, "Fiorella", "Contract");
+            Task ta10 = new Task(10, "Organize", 1, "Daniel", "Managment"); 
             Controller.grafo.nuevoVertice(ta1);
             Controller.grafo.nuevoVertice(ta2);
             Controller.grafo.nuevoVertice(ta3);
@@ -242,11 +268,16 @@ public class TaskRegister extends javax.swing.JFrame {
             Controller.grafo.agregarRuta(Controller.grafo.vertices[7], Controller.grafo.vertices[8], 9, 9);
             Controller.grafo.agregarRuta(Controller.grafo.vertices[8], Controller.grafo.vertices[9], 1, 10);
             Controller.grafo.agregarRuta(Controller.grafo.vertices[9], Controller.grafo.vertices[0], 10, 1);
+           */
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Verify the data entered", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             Controller.register_TaskRegister(Integer.parseInt(ID.getText()), description.getText(), Integer.parseInt(effort.getText()), inCharge.getText(), type.getText());
@@ -256,14 +287,20 @@ public class TaskRegister extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         CriticalRoute ven = new CriticalRoute();
         ven.setTitle("Show Dependencies");
         dispose();
         ven.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             String info = Controller.LoadTasks();
@@ -272,6 +309,23 @@ public class TaskRegister extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "This action is imposible to excecute", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+/**
+ * 
+ * @param evt 
+ */
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        Persistence per = new Persistence();
+        try {
+            jButton4.setEnabled(true);
+            Controller.listTask=per.retrieveTasks();
+            Controller.grafo=per.retrieveGraph();
+            Controller.listResources=per.retrieveResource();
+        } catch (IOException ex) {
+            Logger.getLogger(TaskRegister.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TaskRegister.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -318,6 +372,7 @@ public class TaskRegister extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

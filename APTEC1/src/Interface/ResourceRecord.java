@@ -194,6 +194,10 @@ public class ResourceRecord extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_availableRActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ShowWBS ven = new ShowWBS();
         ven.setTitle("Show WBS");
@@ -201,6 +205,10 @@ public class ResourceRecord extends javax.swing.JFrame {
         ven.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         ShortestRoute ven = new ShortestRoute();
         ven.setTitle("Shortest Route");
@@ -208,6 +216,10 @@ public class ResourceRecord extends javax.swing.JFrame {
         ven.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         try {
             String info = Controller.LoadResource();
