@@ -316,7 +316,9 @@ public class TaskRegister extends javax.swing.JFrame implements Serializable {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         Persistence per = new Persistence();
         try {
-            jButton4.setEnabled(true);
+            jButton4.setEnabled(false);
+            jButton1.setEnabled(true);
+            jButton2.setEnabled(true);
             Controller.listTask=per.retrieveTasks();
             Controller.grafo=per.retrieveGraph();
             Controller.listResources=per.retrieveResource();
